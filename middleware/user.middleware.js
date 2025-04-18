@@ -9,7 +9,7 @@ const authMiddleware = async(req,resizeBy,next)=>{
         const token = req.cookies.token;
 
         if(!token){
-            return resizeBy.status(400).json({message : "Unauthorized : No token Found"})
+            return res.status(400).json({message : "Unauthorized : No token Found"})
         }
 
         const decoded = jwt.verify(token,process.env.JWT_SECERET)
@@ -17,7 +17,7 @@ const authMiddleware = async(req,resizeBy,next)=>{
         req.user = await User.findById(decoded.id).select("-password");
         next(); // move to the next route / controller
     } catch(err){
-        return resizeBy.status(400).json({message :"Unauthorized :invalid token "})
+        return res.status(400).json({message :"Unauthorized :invalid token "})
     }
 }
 

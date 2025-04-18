@@ -4,6 +4,7 @@ import connectDB from "./db/db.js";
 import dotenv from "dotenv"
 import cookieParser from "cookie-parser"
 
+
 dotenv.config()
 
 const app = express();
